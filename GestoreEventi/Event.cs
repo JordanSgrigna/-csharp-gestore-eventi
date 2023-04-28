@@ -17,8 +17,16 @@ namespace GestoreEventi
 		//COSTRUTTORE
 		public Event(string eventTitle, DateTime eventDate, int maxNumberOfPeopleInEvent, int numberOfReservedSeats = 0)
 		{
-			this.eventTitle = eventTitle;
-
+			//EVENT TITLE
+			if(eventTitle == "")
+			{
+				throw new Exception("Non puoi creare un evento senza il nome");
+			}
+			else
+			{
+				this.eventTitle = eventTitle;
+			}
+			//DATE
 			if (eventDate > DateTime.Now)
 			{
 				this.eventDate = eventDate;
@@ -27,9 +35,24 @@ namespace GestoreEventi
 			{
 				throw new Exception("Non puoi creare un evento nel passato!");
 			}
-
-			this.maxNumberOfPeopleInEvent = maxNumberOfPeopleInEvent;
-			this.numberOfReservedSeats = numberOfReservedSeats;
+			//MAX NUMBER OF PEOPLE
+			if(maxNumberOfPeopleInEvent > 0)
+			{
+				this.maxNumberOfPeopleInEvent = maxNumberOfPeopleInEvent;
+			}
+			else
+			{
+				throw new Exception("L'evento non può avere una capacità di persone negativa");
+			}
+			//RESERVED SEATS
+			if (numberOfReservedSeats >= 0)
+			{
+				this.numberOfReservedSeats = numberOfReservedSeats;
+			}
+			else
+			{
+				throw new Exception("L'evento non può avere dei posti prenotati negativi");
+			}
 		}
 
 		//GETTERS

@@ -45,19 +45,19 @@ while (!userWantsToStop)
 */
 
 //MILESTONE 4
-Console.Write("Inserisci il nome del programma eventi");
+Console.Write("Inserisci il nome del programma eventi: ");
 string userNameChosenForScheduler = Console.ReadLine();
 
 Console.Write("Quanti eventi vuoi aggiungere? ");
 int userNumberOfEvents = int.Parse(Console.ReadLine());
 
+Console.WriteLine("");
+
 ScheduleEvents Scheduler1 = new ScheduleEvents(userNameChosenForScheduler);
 
 
 while (Scheduler1.GetListOfEvents().Count < userNumberOfEvents)
-{
-	try
-	{
+{	
 		Console.Write("Inserisci il nome dell'evento: ");
 		string userEventTitle = Console.ReadLine();
 
@@ -66,17 +66,37 @@ while (Scheduler1.GetListOfEvents().Count < userNumberOfEvents)
 
 		Console.Write("Inserisci il numero massimo di posti disponibili: ");
 		int userMaxNumberOfPeopleInEvent = int.Parse(Console.ReadLine());
-
+	try 
+	{
 		Event Event = new Event(userEventTitle, userEventDate, userMaxNumberOfPeopleInEvent);
 
 		Scheduler1.AddEventToEventList(Event);
 	}
+	catch (Exception e)
+	{
+		Console.WriteLine(e.ToString());
+	}
+
+	Console.WriteLine("");
 }
 
+Console.WriteLine(Scheduler1.ToString());
+
+Console.WriteLine("Inserisci una data per vedere quali eventi ci sono in quel giorno (dd/mm/yyyy): ");
+DateTime userDateChosen = DateTime.Parse(Console.ReadLine());
+
+List<Event> EventsWithSameDate = Scheduler1.GetListOfEventWithSameDate(userDateChosen);
+ScheduleEvents.ListInString(EventsWithSameDate);
+
+Scheduler1.EmptyListOfEvents();
+Console.WriteLine(Scheduler1.ToString());
 
 
 
 
 
 
-}
+
+
+
+

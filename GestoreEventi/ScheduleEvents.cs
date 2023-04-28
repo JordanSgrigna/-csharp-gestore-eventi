@@ -15,7 +15,7 @@ namespace GestoreEventi
 		public ScheduleEvents(string name)
 		{
 			this.name = name;
-			this.ListOfEvents = new List<Event>;
+			this.ListOfEvents = new List<Event>();
 		}
 
 		//GETTERS
@@ -76,7 +76,7 @@ namespace GestoreEventi
 			string infoString = "";
 			foreach(Event eventInListToPrint  in this.ListOfEvents)
 			{
-				infoString = eventInListToPrint.GetEventDate() + "-" + eventInListToPrint.GetEventTitle() + "\n";
+				infoString = eventInListToPrint.GetEventDate().ToString("dd/MM/yyyy") + "-" + eventInListToPrint.GetEventTitle() + "\n";
 			}
 
 			return infoString;
