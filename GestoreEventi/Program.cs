@@ -79,17 +79,44 @@ while (Scheduler1.GetListOfEvents().Count < userNumberOfEvents)
 
 	Console.WriteLine("");
 }
+Console.WriteLine("");
+Console.Write("Inserisci il nome della conferenza: ");
+string userConferenceName = Console.ReadLine();
+
+Console.Write("Inserisci la data della conferenza (dd/mm/yyyy): ");
+DateTime userConferenceDate = DateTime.Parse(Console.ReadLine());
+
+Console.Write("Aggiungi il numero di posti massimo per la conferenza: ");
+int userConferenceMaxPeopleCapacity = int.Parse(Console.ReadLine());
+
+Console.Write("Aggiungi il relatore della conferenza: ");
+string userConferenceSpeaker = Console.ReadLine();
+
+Console.Write("Aggiungi il prezzo per la conferenza: ");
+double userConferencePrice = double.Parse(Console.ReadLine());
+
+
+Conference FirstConference = new Conference(userConferenceSpeaker, userConferencePrice, userConferenceName, userConferenceDate, userConferenceMaxPeopleCapacity);
+Scheduler1.AddEventToEventList(FirstConference);
+
+Console.WriteLine("");
 
 Console.WriteLine(Scheduler1.ToString());
 
-Console.Write("Inserisci una data per vedere quali eventi ci sono in quel giorno (dd/mm/yyyy): ");
-DateTime userDateChosen = DateTime.Parse(Console.ReadLine());
+//Console.Write("Inserisci una data per vedere quali eventi ci sono in quel giorno (dd/mm/yyyy): ");
+//DateTime userDateChosen = DateTime.Parse(Console.ReadLine());
 
-List<Event> EventsWithSameDate = Scheduler1.GetListOfEventWithSameDate(userDateChosen);
-Console.WriteLine(ScheduleEvents.ListInString(EventsWithSameDate));
+//List<Event> EventsWithSameDate = Scheduler1.GetListOfEventWithSameDate(userDateChosen);
+//Console.WriteLine(ScheduleEvents.ListInString(EventsWithSameDate));
 
-Scheduler1.EmptyListOfEvents();
-Console.WriteLine(Scheduler1.ToString());
+//Scheduler1.EmptyListOfEvents();
+//Console.WriteLine(Scheduler1.ToString());
+
+
+
+
+
+
 
 
 
