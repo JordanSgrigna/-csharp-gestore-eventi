@@ -86,13 +86,21 @@ namespace GestoreEventi
 
 		public void CancelReservations (int reservationsToCancel)
 		{
-			if ((numberOfReservedSeats - reservationsToCancel < numberOfReservedSeats) && (eventDate > DateTime.Now))
+			if (reservationsToCancel < 0)
 			{
-				numberOfReservedSeats -= reservationsToCancel;
+				throw new Exception("Non puoi disdire posti negativi");
+			}
+			else if ((reservationsToCancel < this.numberOfReservedSeats))
+			{
+				throw new Exception("Non puoi disdire più posti di quanti ne siano stati prenotati");
+			}
+			else if((numberOfReservedSeats - reservationsToCancel > numberOfReservedSeats) && (eventDate < DateTime.Now))
+			{
+				throw new Exception("Non puoi disdire posti per questo evento");
 			}
 			else
 			{
-				throw new Exception("Non ci sono più prenotazioni da disdire");
+				this.numberOfReservedSeats -= reservationsToCancel;
 			}
 		}
 

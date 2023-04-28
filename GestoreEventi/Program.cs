@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics.Tracing;
 using GestoreEventi;
 
+/*
+//MILESTONE 2 
 Console.Write("Inserisci il nome dell'evento: ");
 string userEventTitle = Console.ReadLine();
 
@@ -40,6 +42,40 @@ while (!userWantsToStop)
 		Console.WriteLine("Ok va bene!");
 		userWantsToStop = true;
 	}
+*/
+
+//MILESTONE 4
+Console.Write("Inserisci il nome del programma eventi");
+string userNameChosenForScheduler = Console.ReadLine();
+
+Console.Write("Quanti eventi vuoi aggiungere? ");
+int userNumberOfEvents = int.Parse(Console.ReadLine());
+
+ScheduleEvents Scheduler1 = new ScheduleEvents(userNameChosenForScheduler);
+
+
+while (Scheduler1.GetListOfEvents().Count < userNumberOfEvents)
+{
+	try
+	{
+		Console.Write("Inserisci il nome dell'evento: ");
+		string userEventTitle = Console.ReadLine();
+
+		Console.Write("Inserisci la data dell'evento (gg/mm/aaaa): ");
+		DateTime userEventDate = DateTime.Parse(Console.ReadLine());
+
+		Console.Write("Inserisci il numero massimo di posti disponibili: ");
+		int userMaxNumberOfPeopleInEvent = int.Parse(Console.ReadLine());
+
+		Event Event = new Event(userEventTitle, userEventDate, userMaxNumberOfPeopleInEvent);
+
+		Scheduler1.AddEventToEventList(Event);
+	}
+}
+
+
+
+
 
 
 
