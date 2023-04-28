@@ -82,11 +82,11 @@ while (Scheduler1.GetListOfEvents().Count < userNumberOfEvents)
 
 Console.WriteLine(Scheduler1.ToString());
 
-Console.WriteLine("Inserisci una data per vedere quali eventi ci sono in quel giorno (dd/mm/yyyy): ");
+Console.Write("Inserisci una data per vedere quali eventi ci sono in quel giorno (dd/mm/yyyy): ");
 DateTime userDateChosen = DateTime.Parse(Console.ReadLine());
 
 List<Event> EventsWithSameDate = Scheduler1.GetListOfEventWithSameDate(userDateChosen);
-ScheduleEvents.ListInString(EventsWithSameDate);
+Console.WriteLine(ScheduleEvents.ListInString(EventsWithSameDate));
 
 Scheduler1.EmptyListOfEvents();
 Console.WriteLine(Scheduler1.ToString());

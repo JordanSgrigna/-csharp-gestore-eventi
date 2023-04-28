@@ -35,8 +35,7 @@ namespace GestoreEventi
 			string infoString = "";
 			foreach (Event EventsToPrint in listOfEvents)
 			{
-				infoString = "-" + EventsToPrint.ToString() + "\n";
-				infoString = "\n";
+				infoString += "-" + EventsToPrint.ToString() + "\n";
 			}
 			return infoString;
 		}
@@ -76,7 +75,7 @@ namespace GestoreEventi
 			string infoString = "";
 			foreach(Event eventInListToPrint  in this.ListOfEvents)
 			{
-				infoString = eventInListToPrint.GetEventDate().ToString("dd/MM/yyyy") + "-" + eventInListToPrint.GetEventTitle() + "\n";
+				infoString += eventInListToPrint.GetEventDate().ToString("dd/MM/yyyy") + "-" + eventInListToPrint.GetEventTitle() + "\n";
 			}
 
 			return infoString;
