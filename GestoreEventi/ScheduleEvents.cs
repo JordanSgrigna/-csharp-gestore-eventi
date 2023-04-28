@@ -12,7 +12,7 @@ namespace GestoreEventi
 		List<Event> ListOfEvents;
 
 		//CONSTRUCTOR
-		public ScheduleEvents(string name, List<Event> listOfEvents)
+		public ScheduleEvents(string name)
 		{
 			this.name = name;
 			this.ListOfEvents = new List<Event>;
@@ -24,23 +24,63 @@ namespace GestoreEventi
 			return this.name;
 		}
 
-		public List<Event> GetListOfEvent()
+		public List<Event> GetListOfEvents()
 		{
 			return this.ListOfEvents;
 		}
 
 		//METHODS
-		public override string ToString()
+		public static string ListInString(List<Event> listOfEvents)
 		{
-			foreach (Event EventToPrint in this.ListOfEvents)
+			string infoString = "";
+			foreach (Event EventsToPrint in listOfEvents)
 			{
-				return EventToPrint.ToString();
+				infoString = "-" + EventsToPrint.ToString() + "\n";
+				infoString = "\n";
 			}
+			return infoString;
 		}
 
 		public void AddEventToEventList(Event eventToAdd)
 		{
 			this.ListOfEvents.Add(eventToAdd);
+		}
+
+		public List<Event> GetListOfEventWithSameDate(DateTime date)
+		{
+			List<Event> listOfEventsWithSameDate = new List<Event>();
+
+			foreach(Event eventWithSameDate in this.ListOfEvents)
+			{
+				if (eventWithSameDate.GetEventDate() == date)
+				{
+					listOfEventsWithSameDate.Add(eventWithSameDate);
+				}
+			}
+
+			return listOfEventsWithSameDate;
+		}
+
+		public int GetNumberOfEvents(List<Event> listOfEvents)
+		{
+			return listOfEvents.Count;
+		}
+
+		public void EmptyListOfEvents()
+		{
+			this.ListOfEvents.Clear();
+		}
+
+		public override string ToString()
+		{
+			string infoString = "";
+			foreach(Event eventInListToPrint  in this.ListOfEvents)
+			{
+				infoString = eventInListToPrint.GetEventDate() + "-" + eventInListToPrint.GetEventTitle() + "\n";
+			}
+
+			return infoString;
+			
 		}
 
 

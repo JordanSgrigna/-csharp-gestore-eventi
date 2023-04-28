@@ -94,7 +94,7 @@ namespace GestoreEventi
 			{
 				throw new Exception("Non puoi disdire più posti di quanti ne siano stati prenotati");
 			}
-			else if((numberOfReservedSeats - reservationsToCancel > numberOfReservedSeats) && (eventDate < DateTime.Now))
+			else if((numberOfReservedSeats - reservationsToCancel > numberOfReservedSeats) || (eventDate < DateTime.Now))
 			{
 				throw new Exception("Non puoi disdire posti per questo evento");
 			}
