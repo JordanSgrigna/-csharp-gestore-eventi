@@ -87,6 +87,13 @@ namespace GestoreEventi
 			}
 		}
 
+		public override string ToString()
+		{
+			string eventInfo = $"{this.eventTitle} - {this.eventDate.ToString("dd/MM/yyyy")}";
+			return eventInfo;
+			
+		}
+
 
 	}
 }
