@@ -15,10 +15,19 @@ namespace GestoreEventi
 		private int numberOfReservedSeats;
 
 		//COSTRUTTORE
-		public Event(string eventTitle, DateTime eventDate, int maxNumberOfPeopleInEvent, int numberOfReservedSeats)
+		public Event(string eventTitle, DateTime eventDate, int maxNumberOfPeopleInEvent, int numberOfReservedSeats = 0)
 		{
 			this.eventTitle = eventTitle;
-			this.eventDate = new DateTime();
+
+			if (eventDate > DateTime.Now)
+			{
+				this.eventDate = eventDate;
+			}
+			else
+			{
+				throw new Exception("Non puoi creare un evento nel passato!");
+			}
+
 			this.maxNumberOfPeopleInEvent = maxNumberOfPeopleInEvent;
 			this.numberOfReservedSeats = numberOfReservedSeats;
 		}
@@ -58,7 +67,7 @@ namespace GestoreEventi
 			}
 			else
 			{
-				throw new Exception("Non puoi creare un evento nel passato!");
+				throw new Exception("Non puoi mettere una data nel passato!");
 			}
 		}
 
